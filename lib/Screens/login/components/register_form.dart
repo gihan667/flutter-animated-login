@@ -6,11 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({
-    Key key,
-    @required this.isLogin,
-    @required this.animationDuration,
-    @required this.size,
-    @required this.defaultLoginSize,
+    Key? key,
+    required this.isLogin,
+    required this.animationDuration,
+    required this.size,
+    required this.defaultLoginSize,
   }) : super(key: key);
 
   final bool isLogin;

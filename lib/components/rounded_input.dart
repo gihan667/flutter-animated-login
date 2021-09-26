@@ -4,9 +4,9 @@ import 'package:flutter_login/constants.dart';
 
 class RoundedInput extends StatelessWidget {
   const RoundedInput({
-    Key key,
-    @required this.icon,
-    @required this.hint
+    Key? key,
+    required this.icon,
+    required this.hint
   }) : super(key: key);
 
   final IconData icon;

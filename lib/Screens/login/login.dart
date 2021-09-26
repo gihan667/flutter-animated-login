@@ -13,21 +13,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
   
   bool isLogin = true;
-  Animation<double> containerSize;
-  AnimationController animationController;
+  late Animation<double> containerSize;
+  AnimationController? animationController;
   Duration animationDuration = Duration(milliseconds: 270);
 
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIOverlays([]);
-
     animationController = AnimationController(vsync: this, duration: animationDuration);
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -39,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     double defaultLoginSize = size.height - (size.height * 0.2);
     double defaultRegisterSize = size.height - (size.height * 0.1);
 
-    containerSize = Tween<double>(begin: size.height * 0.1, end: defaultRegisterSize).animate(CurvedAnimation(parent: animationController, curve: Curves.linear));
+    containerSize = Tween<double>(begin: size.height * 0.1, end: defaultRegisterSize).animate(CurvedAnimation(parent: animationController!, curve: Curves.linear));
 
     return Scaffold(
       body: Stack(
@@ -78,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             size: size,
             animationController: animationController,
             tapEvent: isLogin ? null : () { // returning null to disable the button
-              animationController.reverse();
+              animationController!.reverse();
               setState(() {
                 isLogin = !isLogin;
               });
@@ -90,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
           // Register Container
           AnimatedBuilder(
-            animation: animationController,
+            animation: animationController!,
             builder: (context, child) {
               if (viewInset == 0 && isLogin) {
                 return buildRegisterContainer();
@@ -127,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         alignment: Alignment.center,
         child: GestureDetector(
           onTap: !isLogin ? null : () {
-            animationController.forward();
+            animationController!.forward();
 
             setState(() {
               isLogin = !isLogin;

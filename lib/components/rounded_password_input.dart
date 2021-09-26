@@ -4,8 +4,8 @@ import 'package:flutter_login/constants.dart';
 
 class RoundedPasswordInput extends StatelessWidget {
   const RoundedPasswordInput({
-    Key key,
-    @required this.hint
+    Key? key,
+    required this.hint
   }) : super(key: key);
 
   final String hint;

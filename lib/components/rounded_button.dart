@@ -3,8 +3,8 @@ import 'package:flutter_login/constants.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
   final String title;
